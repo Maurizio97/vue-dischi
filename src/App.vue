@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <MyHeader/>
-    <ListPersonages/>
+    <main>
+      <ListPersonages/>
+    </main>
   </div>
 </template>
 
@@ -28,5 +30,10 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+main {
+  background-color: #1e2d3b;
+  height: 100vh;
 }
 </style>
