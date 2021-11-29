@@ -1,11 +1,6 @@
 <template>
   <div id="container">
-    <Disk/>
-    <Disk/>
-    <Disk/>
-    <Disk/>
-    <Disk/>
-    <!-- v-for="diskt, i in ListDisk" :key="i" :details="diskt" -->
+    <Disk v-for="disk, i in listDisk" :key="i" :details="disk"/> 
   </div>
 </template>
 
@@ -21,7 +16,7 @@ export default {
   data() {
     return {
         apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
-        ListDisk: [],
+        listDisk: [],
     };
   },
   created(){
@@ -33,7 +28,7 @@ export default {
       .get(this.apiUrl)
       .then((result) =>{
         // console.log(result.data.response);
-        this.listPersonages = result.data.response
+        this.listDisk = result.data.response
       });
 
     }
@@ -45,9 +40,10 @@ export default {
 <style scoped lang="scss">
     #container {
         margin: 0 auto;
-        width: 70%;
+        width: 60%;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        padding: 100px 0;
     }
 </style>

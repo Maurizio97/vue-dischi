@@ -1,14 +1,9 @@
 <template>
     <div class="disk-card">
-        <img :src="disk.poster" :alt="disk.title">
-        <h3>{{ disk.title }}</h3>
-        <div>{{ disk.author }}</div>
-        <div>{{ disk.year }}</div>
-        <!-- "poster": "https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg",
-            "title": "New Jersey",
-            "author": "Bon Jovi",
-            "genre": "Rock",
-            "year": "1988" -->
+        <img :src="details.poster" :alt="details.title">
+        <h2>{{ details.title }}</h2>
+        <div>{{ details.author }}</div>
+        <div>{{ details.year }}</div>
     </div>
 </template>
 
@@ -18,17 +13,6 @@ export default {
   props: {
       details:Object
   },
-  data(){
-      return {
-          disk:{
-            "poster": "https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg",
-            "title": "New Jersey",
-            "author": "Bon Jovi",
-            "genre": "Rock",
-            "year": "1988"
-          }
-      }
-  }
 };
 </script>
 
@@ -36,8 +20,25 @@ export default {
 <style scoped lang="scss">
     .disk-card {
         width: 17%;
+        background-color: #2e3a46;
+        margin-bottom: 50px;
+        padding: 10px;
+        text-align: center;
+
         img {
-            max-width: 100%;
+            max-width: 85%;
+        }
+
+        h2 {
+            color: white;
+            margin: 15px 0;
+        }
+
+        div {
+            color: gray;
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
         }
     }
 </style>
