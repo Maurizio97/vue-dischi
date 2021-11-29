@@ -13,17 +13,6 @@
 <script>
 export default {
   name: "FilterDisk",
-  data(){
-      return {
-          optionChoise: "",
-      }
-  },
-  methods: {
-      selectOption(event){
-          this.optionChoise = event.target.value
-          console.log("hai selezionato: ",this.optionChoise);
-      }
-  }
 };
 </script>
 
