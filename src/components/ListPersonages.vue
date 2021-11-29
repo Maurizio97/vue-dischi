@@ -1,18 +1,10 @@
 <template>
 <div>
   <div id="cont-select">
-  <FilterDisk 
-  v-for="gen, i in listGen" 
-  :key="i" 
-  :details="gen"
-  @search="selectOption"/>
-  <select name="genre" id="" @change="$emit('search', $event)">
-    <option :value="'all'">All</option>
-    <option 
-    v-for="gen, i in listGen" 
-    :key="i" 
-    :value="gen">{{gen}}</option>
-  </select>
+    <FilterDisk 
+      :list="listGen" 
+      @search="selectOption"
+    />
   </div>
 
   <div id="container">
@@ -42,18 +34,14 @@ export default {
     return {
         apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
         listDisk: [],
-        // genListDisk: [],
         optionChoise: "all",
-        /* listGen: null, */
+        listGen: [],
     };
   },
 
   created(){
-    this.getArray()
-    this.allGen()
-    console.log(this.listGen);
+    this.getArray();
   },
-
   computed:{
     // creo un nuovo array per filtrare i contenuti in pagina
     filteredListDisk(){
@@ -73,24 +61,21 @@ export default {
       .get(this.apiUrl)
       .then((result) =>{
         this.listDisk = result.data.response
+        this.allGen();
       });
     },
-
-
     // funzione che ultilizzo per creare un array senza doppioni
     allGen(){
-      const listGen = this.listDisk.filter((item) => {
-          if(listGen.toLowerCase().includes(item.genre.toLowerCase())){
-            return
-          }
-          return item.genre
-          
-      })
+      for(let i = 0; i < this.listDisk.length; i++){
+        if(!this.listGen.includes(this.listDisk[i].genre)){
+          this.listGen.push(this.listDisk[i].genre)
+        }
+      }
     },
     
     // salvo il valore della scelta utente
-    selectOption(event){
-      this.optionChoise = event.target.value
+    selectOption(genere){
+      this.optionChoise = genere;
       console.log("hai selezionato: ",this.optionChoise);
     },
   }
