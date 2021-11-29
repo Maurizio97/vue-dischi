@@ -2,10 +2,11 @@
     <div>
         <select name="genre" id="" @change="$emit('search', $event)">
             <option :value="'all'">All</option>
-            <option :value="'rock'">Rock</option>
+            <!-- <option :value="'rock'">Rock</option>
             <option :value="'pop'">Pop</option>
             <option :value="'jazz'">Jazz</option>
-            <option :value="'metal'">Metal</option>
+            <option :value="'metal'">Metal</option> -->
+            <option :value="details">{{details}}</option>
         </select>
     </div>
 </template>
@@ -13,6 +14,9 @@
 <script>
 export default {
   name: "FilterDisk",
+  props: {
+      details:String
+  }
 };
 </script>
 
