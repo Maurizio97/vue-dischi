@@ -1,7 +1,7 @@
 <template>
     <div>
         <select name="genre" id="" @change="$emit('search', $event.target.value)">
-            <option :value="'all'">All</option>
+            <option value="all">All</option>
             <option v-for="item, i in list" :key="i">{{item}}</option>
         </select>
     </div>
