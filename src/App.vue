@@ -67,11 +67,11 @@ main {
   min-height: calc(100vh - 80px);
 }
 #banner-logo {
-        height: 80px;
-        background-color: #2e3a46;
+  height: 80px;
+  background-color: #2e3a46;
 }
 #cont-select {
-      text-align: end;
-      padding: 10px 0;
+  text-align: end;
+  padding: 10px 0;
 }
 </style>

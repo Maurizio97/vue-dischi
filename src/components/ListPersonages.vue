@@ -37,6 +37,7 @@ export default {
     this.getArray();
     this.$emit('newListDisk', this.listGen)
   },
+
   computed:{
     // creo un nuovo array per filtrare i contenuti in pagina
     filteredListDisk(){
@@ -74,12 +75,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    #container {
-        margin: 0 auto;
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 100px 0;
-    }
+  #container {
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 100px 0;
+  }
 </style>
