@@ -69,6 +69,9 @@ main {
 #banner-logo {
   height: 80px;
   background-color: #2e3a46;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 #cont-select {
   text-align: end;

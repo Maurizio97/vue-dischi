@@ -18,6 +18,11 @@ export default {
 
 <style scoped lang="scss">
   select {
-      margin: 0 auto;
+    margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    background-color: #2e3a46;
+    color: white;
   }
 </style>
