@@ -1,24 +1,17 @@
 <template>
 <div>
-  <div id="cont-select">
-    <FilterDisk 
-      :list="listGen" 
-      @search="selectOption"
-    />
-  </div>
-
   <div id="container">
     <Disk 
     v-for="disk, i in filteredListDisk" 
     :key="i" 
     :details="disk"/> 
+    
   </div>
 </div>
   
 </template>
 
 <script>
-import FilterDisk from '@/components/FilterDisk.vue'
 import Disk from '@/components/Disk.vue'
 import Axios from 'axios'
 
@@ -27,30 +20,32 @@ export default {
   name: "ListDisk",
   components: {
     Disk,
-    FilterDisk,
   },
-
+  props: {
+    details:String
+  },
   data() {
     return {
+      // devo spostare il valore di listGen nell'app tramite un emit
         apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
         listDisk: [],
-        optionChoise: "all",
         listGen: [],
     };
   },
 
   created(){
     this.getArray();
+    this.$emit('newListDisk', this.listGen)
   },
   computed:{
     // creo un nuovo array per filtrare i contenuti in pagina
     filteredListDisk(){
-      if(this.optionChoise === "all"){
+      if(this.details === "all"){
         return this.listDisk
       }
 
       return this.listDisk.filter((item) => {
-        return item.genre.toLowerCase().includes(this.optionChoise.toLowerCase())
+        return item.genre.toLowerCase().includes(this.details.toLowerCase())
       })
     },
   },
@@ -64,6 +59,7 @@ export default {
         this.allGen();
       });
     },
+
     // funzione che ultilizzo per creare un array senza doppioni
     allGen(){
       for(let i = 0; i < this.listDisk.length; i++){
@@ -71,12 +67,6 @@ export default {
           this.listGen.push(this.listDisk[i].genre)
         }
       }
-    },
-    
-    // salvo il valore della scelta utente
-    selectOption(genere){
-      this.optionChoise = genere;
-      console.log("hai selezionato: ",this.optionChoise);
     },
   }
 };
@@ -91,10 +81,5 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
         padding: 100px 0;
-    }
-
-    #cont-select {
-      text-align: center;
-      padding: 10px 0;
     }
 </style>
